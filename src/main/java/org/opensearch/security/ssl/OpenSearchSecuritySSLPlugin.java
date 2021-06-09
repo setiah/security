@@ -82,13 +82,14 @@ import org.opensearch.transport.SharedGroupFactory;
 import org.opensearch.transport.Transport;
 import org.opensearch.transport.TransportInterceptor;
 import org.opensearch.watcher.ResourceWatcherService;
+import org.opensearch.inbuiltsecurity.spi.SecurityModule;
 
 import org.opensearch.security.ssl.http.netty.ValidatingDispatcher;
 import org.opensearch.security.ssl.transport.PrincipalExtractor;
 import org.opensearch.security.ssl.transport.SecuritySSLTransportInterceptor;
 
 //For ES5 this class has only effect when SSL only plugin is installed
-public class OpenSearchSecuritySSLPlugin extends Plugin implements SystemIndexPlugin, NetworkPlugin {
+public class OpenSearchSecuritySSLPlugin extends SecurityModule implements SystemIndexPlugin, NetworkPlugin {
 
     private static boolean USE_NETTY_DEFAULT_ALLOCATOR = Booleans.parseBoolean(System.getProperty("opensearch.unsafe.use_netty_default_allocator"), false);
     public static final boolean OPENSSL_SUPPORTED = (PlatformDependent.javaVersion() < 12) && USE_NETTY_DEFAULT_ALLOCATOR;
