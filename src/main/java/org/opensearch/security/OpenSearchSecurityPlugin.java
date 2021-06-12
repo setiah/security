@@ -47,6 +47,7 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.opensearch.inbuiltsecurity.spi.SecurityModule;
 import org.opensearch.security.auditlog.NullAuditLog;
 import org.opensearch.security.auditlog.impl.AuditLogImpl;
 import org.opensearch.security.compliance.ComplianceIndexingOperationListenerImpl;
@@ -248,6 +249,7 @@ public final class OpenSearchSecurityPlugin extends OpenSearchSecuritySSLPlugin 
         disabled = isDisabled(settings);
         sslCertReloadEnabled = isSslCertReloadEnabled(settings);
 
+        log.info("Initializing OpenSearchSecurityPlugin...");
         if (disabled) {
             this.sslCertReloadEnabled = false;
             log.warn("OpenSearch Security plugin installed but disabled. This can expose your configuration (including passwords) to the public.");

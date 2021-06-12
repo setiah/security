@@ -17,6 +17,7 @@
 
 package org.opensearch.security.ssl;
 
+import org.opensearch.inbuiltsecurity.spi.SecurityModule;
 import org.opensearch.security.DefaultObjectMapper;
 import org.opensearch.security.NonValidatingObjectMapper;
 import org.opensearch.security.ssl.http.netty.SecuritySSLNettyHttpServerTransport;
@@ -82,7 +83,6 @@ import org.opensearch.transport.SharedGroupFactory;
 import org.opensearch.transport.Transport;
 import org.opensearch.transport.TransportInterceptor;
 import org.opensearch.watcher.ResourceWatcherService;
-import org.opensearch.inbuiltsecurity.spi.SecurityModule;
 
 import org.opensearch.security.ssl.http.netty.ValidatingDispatcher;
 import org.opensearch.security.ssl.transport.PrincipalExtractor;
@@ -113,6 +113,7 @@ public class OpenSearchSecuritySSLPlugin extends SecurityModule implements Syste
 
     protected OpenSearchSecuritySSLPlugin(final Settings settings, final Path configPath, boolean disabled) {
 
+        log.info("Initializing OpenSearchSecuritySSLPlugin...");
         if(disabled) {
             this.settings = null;
             this.sharedGroupFactory = null;

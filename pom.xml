@@ -831,10 +831,11 @@
             </resource>
             <resource>
                 <directory>${basedir}/src/main/resources</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>static_config/**/*.yml</include>
-                </includes>
+<!--                <filtering>false</filtering>-->
+<!--                <includes>-->
+<!--                    <include>static_config/**/*.yml</include>-->
+<!--                    <include>META-INF/services/*</include>-->
+<!--                </includes>-->
             </resource>
         </resources>
     </build>
