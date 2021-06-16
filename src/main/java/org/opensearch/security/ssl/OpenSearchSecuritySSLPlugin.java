@@ -17,6 +17,7 @@
 
 package org.opensearch.security.ssl;
 
+import org.opensearch.plugins.OverridablePlugin;
 import org.opensearch.security.DefaultObjectMapper;
 import org.opensearch.security.NonValidatingObjectMapper;
 import org.opensearch.security.ssl.http.netty.SecuritySSLNettyHttpServerTransport;
@@ -88,7 +89,7 @@ import org.opensearch.security.ssl.transport.PrincipalExtractor;
 import org.opensearch.security.ssl.transport.SecuritySSLTransportInterceptor;
 
 //For ES5 this class has only effect when SSL only plugin is installed
-public class OpenSearchSecuritySSLPlugin extends Plugin implements SystemIndexPlugin, NetworkPlugin {
+public class OpenSearchSecuritySSLPlugin extends Plugin implements SystemIndexPlugin, NetworkPlugin, OverridablePlugin {
 
     private static boolean USE_NETTY_DEFAULT_ALLOCATOR = Booleans.parseBoolean(System.getProperty("opensearch.unsafe.use_netty_default_allocator"), false);
     public static final boolean OPENSSL_SUPPORTED = (PlatformDependent.javaVersion() < 12) && USE_NETTY_DEFAULT_ALLOCATOR;
